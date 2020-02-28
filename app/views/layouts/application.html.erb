@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>KKApp</title>
+    <title><%= full_title(yield(:title)) %>  | 勤怠管理システム</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <link href="https://fonts.googleapis.com/css?family=Caveat|Kosugi+Maru&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Caveat&display=swap" rel="stylesheet">
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= render 'layouts/shim'%>
+  
   </head>
 
   <body>
-    <%= yield %>
+    <%= render 'layouts/header'%>
+    <div class="cr">
+      <%= yield %>
+    </div>
   </body>
 </html>
