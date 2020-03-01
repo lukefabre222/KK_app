@@ -76,7 +76,7 @@ p{
 }
 
 #top-image{
-  background-image: image-url("function-overtime.png");
+  background-image: image-url("office_desk.png");
   background-position:center;
   background-repeat: no-repeat;
 }
@@ -85,9 +85,9 @@ p{
   background-color: rgba(51,153,255,0);
 }
 
-.text-line{
+.text-line span {
   background-color:white;
-  background-color: rgba(255,255,255,0.5);
+    background-color: rgba(255,255,255,0.5);
 }
 
 .debug_dump {
