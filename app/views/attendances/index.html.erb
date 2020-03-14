@@ -1,0 +1,58 @@
+<% provide(:title, "勤怠一覧") %>
+
+<h1 class="center">勤怠一覧</h2>
+<div class ="attendance-month">
+  <%= link_to "←", user_path(params: {id: @user.id, first_day: @first_day.prev_month }),class: "btn btn-xs btn-primary" %>
+  &emsp;<%= @first_day.to_s(:year_month) %>&emsp;
+  <%= link_to "→", user_path(params: {id: @user.id, first_day: @first_day.next_month }),class: "btn btn-xs btn-primary" %>
+</div>
+
+  <%= link_to "勤怠を編集", edit_attendances_path(@user, @first_day), class: "btn btn-primary attendance-update" %>
+  
+<table class="table-bordered table-striped table-condensed user-attendances">
+    <thred>
+      <tr>
+        <th rowspan = "2">日付</th>
+        <th rowspan = "2">曜日</th>
+        <th colspan = "2">出社</th>
+        <th colspan = "2">退社</th>
+        <th rowspan = "2">在社時間</th>
+        <th rowspan = "2">備考</th>
+      </tr>
+      <tr>
+        <th>時</th>
+        <th>分</th>
+        <th>時</th>
+        <th>分</th>
+      </tr>
+    </thred>
+    
+    <tbody>
+      <% @dates.each do |day| %>
+        <tr>
+          <td><%= day.worked_on.to_s(:date) %></td>
+          <td><%= %w{日 月 火 水 木 金 土}[day.worked_on.wday] %></td>
+          <td><%= day.started_at.to_s(:hour) if day.started_at.present? %></td>
+          <td><%= day.started_at.to_s(:min) if day.started_at.present? %></td>
+          <td><%= day.finished_at.to_s(:hour) if day.finished_at.present? %></td>
+          <td><%= day.finished_at.to_s(:min) if day.finished_at.present? %></td>
+          <td>
+            <% if day.started_at.present? && day.finished_at.present? %>
+              <%= working_times(day.started_at, day.finished_at) %>
+              <% seconds = (day.finished_at - day.started_at).to_i %>
+              <% @total_seconds = @total_seconds.to_i + seconds %>
+            <% end %>
+          </td>
+          <td><%= day.note %></td>
+        </tr>
+      <% end %>
+    </tbody>    
+    <tfoot>
+      <tr>
+        <td colspan = "2">総合勤務時間:</td>
+        <td colspan = "4"><%= format_basic_time(@user.basic_time).to_f * @worked_sum %></td>
+        <td>在社時間合計</td>
+        <td><%= working_times_sum(@total_seconds) unless @total_seconds.nil? %></td>
+      </tr>
+    </tfoot>
+  </table>
