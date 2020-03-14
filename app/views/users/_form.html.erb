@@ -8,7 +8,7 @@
   <%= f.email_field :email, class: 'form-control' %>
   
   <%= f.label :department %>
-  <%= f.text_field :department, class: 'form-control' %>
+  <%= f.select :department, {未所属:nil,管理部:"管理部",ドコモ委託:"ドコモ委託"},{prompt: "所属を選択してください"},{class: 'form-control'} %>
 
   <%= f.label :password %>
   <%= f.password_field :password, class: 'form-control' %>

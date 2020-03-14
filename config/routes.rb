@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/edit-basic-info/:id', to: 'users#edit_basic_info', as: :basic_info
   patch '/update_basic_info', to: 'users#update_basic_info'
-  resources :users
+  post '/users/:id/attendances/new', to: 'attendances#create'
+  
+  resources :users do
+    resources :attendances
+  end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

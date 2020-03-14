@@ -15,7 +15,6 @@
 }
 body {
   padding-top:60px;
-  font-family: 'Caveat', ;
   font-family: 'Kosugi Maru', ;
 }
 
@@ -55,7 +54,9 @@ p{
   font-size:1.1em;
   line-height:1.7em;
 }
-
+.jumbotron p{
+  font-size:0.9rem;
+}
 /*  ヘッダー */
 
 #logo{
@@ -76,19 +77,18 @@ p{
 }
 
 #top-image{
-  background-image: image-url("KK_app.png");
+  background-image: image-url("login.png");
   background-position:center;
   background-repeat: no-repeat;
   background-size:cover;
 }
 
-#top-main{
-  background-color: rgba(51,153,255,0);
+span {
+  background-color:rbga(255,255,255,1);
 }
 
-.text-line span {
-  background-color:white;
-    background-color: rgba(255,255,255,0.5);
+.signup_link{
+  margin-top:15px;
 }
 
 .debug_dump {
@@ -113,7 +113,7 @@ th{
 /* form */
 
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border-bottom: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
   @include box_sizing;
@@ -143,4 +143,53 @@ input, textarea, select, .uneditable-input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+/* home */
+.jumbotron-css{
+  height:300px;
+  padding-top:15px;
+  background-color:white;
+}
+
+.jumbotron-css h2{
+  font-size: 3.7rem;
+  font-weight:bold;
+  margin-bottom:0px;
+  padding-top:20px;
+  padding-bottom:0px;
+}
+
+.jumbotron-css h3{
+  font-size: 2.5rem;
+  font-weight:bold;
+}
+
+.right-content{
+  margin-top:100px;
+}
+
+.jumbotron-css h5{
+  margin-top:20px;
+}
+
+.en{
+  font-family: 'Caveat', cursive;
+  text-transform: uppercase;
+  font-size:15px;
+}
+
+.login-form{
+  height:500px;
+}
+
+.avater{
+  height:100px;
+}
+
+.login-btn{
+  width:50%;
+  border-radius:25px;
+  display:block;
+  margin:10px auto;
 }
