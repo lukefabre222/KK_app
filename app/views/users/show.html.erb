@@ -1,17 +1,30 @@
 <% provide(:title, @user.name) %>
-
-<h1 class="center"><%= @user.name %></h2>
-<div>
-  <table class="table-bordered table-condensed user-info">
-    <tr>
-      <td>氏名：<%= @user.name %></td>
-      <td>派遣先名: </td>
-      <td>所属案件: <%= @user.department.present? ? @user.department : "未設定" %></td>
-      <td>計算期間:<%=@first_day.to_s(:date)%>～<%=@last_day.to_s(:date)%></td>
-    </tr>
-  </table>
-
+<div class="title-top center">
+  <%= image_tag 'profile.png', class: 'show-image' %>
+  <h1 class="center en">My page</h1>
 </div>
-<p><%= link_to "勤怠一覧", user_attendances_path(params: {id: @user.id}), class: "btn btn-primary attendance-update"%></p>
-<p><%= link_to "交通費", user_attendances_path(params: {id: @user.id}), class: "btn btn-primary attendance-update"%></p>
-<p><%= link_to "ユーザー情報更新", edit_user_path(current_user), class: "btn btn-primary attendance-update"%></p>
+<div class="row">
+  <div class="flex">
+    <div class="col-md-3 profile-panel">
+      <h3 class="panel-title"><i class="fas fa-address-card"></i>氏名</h3>
+      <p class="panel-contents"><%= @user.name %></p>
+    </div>
+    <div class="col-md-3 profile-panel">
+      <h3 class="panel-title"><i class="fas fa-building"></i>派遣先</h3>
+      <p class="panel-contents"></p>
+    </div>
+    <div class="col-md-3 profile-panel">
+      <h3 class="panel-title"><i class="fas fa-users"></i>所属案件</h3>
+      <p class="panel-contents"><%= @user.department.present? ? @user.department : "未設定" %></p>
+    </div>
+    <div class="col-md-3 profile-panel">
+      <h3 class="panel-title"><i class="fas fa-handshake"></i>雇用形態</h3>
+      <p class="panel-contents"></p>
+    </div>
+  </div>
+</div>
+<div class="edit-btn center-item flex">
+  <%= link_to "勤怠一覧", user_attendances_path(params: {id: @user.id}), class: " btn btn-primary attendance-update"%>
+  <%= link_to "交通費一覧", user_attendances_path(params: {id: @user.id}), class: "btn btn-primary attendance-update"%>
+  <%= link_to "ユーザー情報を更新", edit_user_path(current_user), class: "btn btn-primary attendance-update"%>
+</div>

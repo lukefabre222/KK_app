@@ -1,6 +1,9 @@
 <% provide(:title,"勤怠編集" ) %>
 <div>
-  <h1>勤怠編集画面</h1>
+  <div class="title-top center">
+  <%= image_tag 'calender.png', class: 'index-image' %>
+  <h1 class="center">勤怠編集</h1>
+</div>
   <%= form_for(@user, url: update_attendances_path, method: :patch) do |f| %>
     <table class = "table-bordered table-striped table-condensed">
       <thead>

@@ -1,6 +1,8 @@
 <% provide(:title, "勤怠一覧") %>
-
-<h1 class="center">勤怠一覧</h2>
+<div class="title-top center">
+  <%= image_tag 'calender.png', class: 'index-image' %>
+  <h1 class="center">勤怠一覧</h1>
+</div>
 <div class ="attendance-month">
   <%= link_to "←", user_path(params: {id: @user.id, first_day: @first_day.prev_month }),class: "btn btn-xs btn-primary" %>
   &emsp;<%= @first_day.to_s(:year_month) %>&emsp;
